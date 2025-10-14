@@ -5,7 +5,8 @@ FROM node:22-bookworm-slim
 RUN apt-get update && apt-get install -y \
     openssh-server \
     gcc \
-    python3 && \
+    sqlite3 \
+    python3 && \	
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -33,6 +34,8 @@ RUN chown -R web:web /app
 RUN su -s /bin/bash -c "npm install && npm run build" web
 # Copia il file di backup crittografato in una posizione trovabile
 COPY ./scripts/backup/database_backup.aes /home/web
+# Aggiungi utente admin al db
+RUN sqlite3 /app/data/ctf.db 'INSERT INTO users (username, password, isAdmin) VALUES ("admin", "$2b$10$LNwWvdqABFkxAuqPQ3qFIOYoXHGVN7Jxjth28rtMT55DmQ17ZZIKy", 1);'
 
 # 5. SETUP PRIVILEGE ESCALATION
 # Copia i file necessari
