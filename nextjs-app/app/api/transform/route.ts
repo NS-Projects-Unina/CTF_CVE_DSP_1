@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
         const newWidth = params.width; 
         outputPath = path.join(UPLOAD_DIR, `resized-${file}`);
         const command = `convert "${inputPath}" -resize ${newWidth} "${outputPath}"`;
-        return new Promise(resolve => {
+        return new Promise<NextResponse>((resolve) => {
           exec(command, (error, stdout, stderr) => {
             if (error) {
               resolve(NextResponse.json({ error: 'Errore durante il resize legacy', details: stderr }, { status: 500 }));
