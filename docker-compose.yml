@@ -1,0 +1,9 @@
+services:
+  ctf-box:
+    build: .
+    container_name: vuln-gallery-ctf
+    ports:
+      - "3000:3000"
+      - "22:22"
+    tty: true
+    stdin_open: true
