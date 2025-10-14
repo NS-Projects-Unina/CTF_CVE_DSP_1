@@ -44,7 +44,7 @@ export default function RegisterPage() {
           gap: 20,
         }}
       >
-        <h2 style={{ fontSize: 28, margin: 0 }}>Register</h2>
+        <h2 style={{ fontSize: 28, margin: 0 }}>Registrazione</h2>
         <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <input
             className="input"
@@ -91,7 +91,7 @@ export default function RegisterPage() {
             onMouseEnter={e => (e.currentTarget.style.background = '#2563eb')}
             onMouseLeave={e => (e.currentTarget.style.background = '#3b82f6')}
           >
-            Register
+            Registrati
           </button>
         </form>
         {msg && <pre style={{ color: '#f87171' }}>{msg}</pre>}
