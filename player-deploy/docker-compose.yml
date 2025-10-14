@@ -1,7 +1,7 @@
 services:
-  ctf-box:
+  CTF:
     image: simone02/vuln-gallery-ctf:v1
-    container_name: ctf-challenge-box
+    container_name: vuln-gallery
     networks:
       ctf_net:
         ipv4_address: 172.20.0.10
