@@ -26,7 +26,7 @@ RUN echo "simone:scoobydoo" | chpasswd
 
 # 4. SETUP DELLA WEBAPP
 WORKDIR /app
-COPY ./webapp .
+COPY ./nextjs-app .
 # Imposta i permessi corretti per la cartella della webapp
 RUN chown -R web:web /app
 # Installa le dipendenze e builda l'app
