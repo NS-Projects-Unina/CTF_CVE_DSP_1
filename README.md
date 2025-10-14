@@ -35,9 +35,7 @@ Questo progetto utilizza Docker e Docker Compose per una configurazione rapida e
 
 La macchina della CTF è ora in esecuzione e raggiungibile al seguente indirizzo IP statico:
 
-\<p align="center"\>
-\<code style="font-size: 1.5em; padding: 10px; background-color: \#282c34; border-radius: 5px; color: \#61afef;"\>172.20.0.10\</code\>
-\</p\>
+## 172.20.0.10
 
 Inizia la tua fase di ricognizione da qui.
 
