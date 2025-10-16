@@ -35,15 +35,17 @@ RUN su -s /bin/bash -c "npm install && npm run build" web
 # Copia il file di backup crittografato in una posizione trovabile
 COPY ./scripts/backup/database_backup.aes /home/web
 # Aggiungi utente admin al db
-RUN sqlite3 /app/data/ctf.db 'INSERT INTO users (username, password, isAdmin) VALUES ("admin", "$2b$10$LNwWvdqABFkxAuqPQ3qFIOYoXHGVN7Jxjth28rtMT55DmQ17ZZIKy", 1);'
+RUN sqlite3 /app/data/ctf.db 'INSERT INTO users (username, password, isAdmin) VALUES ("admin", "$2b$10$DZyAGXFg9mwVRiWyg6mvHOtPEJCY8dSerVa2KeSV0pIowK3Xt5VoG", 1);'
 
 # 5. SETUP PRIVILEGE ESCALATION
 # Copia i file necessari
 COPY ./scripts/privesc /opt/tools
+RUN mv /opt/tools/log_archiver.py /var/opt
 # Compila il wrapper SUID
 RUN gcc /opt/tools/wrapper.c -o /opt/tools/archive-logs
+RUN rm /opt/tools/wrapper.c	
 # Imposta permessi e proprietari corretti
-RUN chown root:root /opt/tools/log_archiver.py && chmod 644 /opt/tools/log_archiver.py
+RUN chown root:root /var/opt/log_archiver.py && chmod 644 /var/opt/log_archiver.py
 RUN chown root:root /opt/tools/archive-logs && chmod 4755 /opt/tools/archive-logs
 # Pre-configura il PATH vulnerabile per simone
 RUN echo 'export PATH=/home/simone/bin:$PATH' >> /home/simone/.bashrc

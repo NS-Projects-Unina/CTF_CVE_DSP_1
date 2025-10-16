@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     }
 
     char command[512];
-    snprintf(command, sizeof(command), "/usr/bin/python3 /opt/tools/log_archiver.py %s", argv[1]);
+    snprintf(command, sizeof(command), "/usr/bin/python3 /var/opt/log_archiver.py %s", argv[1]);
 
     setuid(0);
     
