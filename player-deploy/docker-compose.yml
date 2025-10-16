@@ -1,6 +1,6 @@
 services:
   CTF:
-    image: simone02/vuln-gallery-ctf:v1
+    image: simone02/vuln-gallery-ctf:v2
     container_name: vuln-gallery
     networks:
       ctf_net:
